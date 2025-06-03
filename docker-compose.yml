@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  customer-front:
+    build:
+      context: ./customer-manager-front
+      dockerfile: Dockerfile
+    container_name: customer-manager-front
+    ports:
+      - '4200:4200'
+    volumes:
+      - ./:/angular-app
+    networks:
+      - customer-network
+  app:
+    build:
+      context: ./customerManager
+      dockerfile: Dockerfile
+    container_name: customer-manager-backend
+    restart: unless-stopped
+    environment:
+        - SERVER_SSL_ENABLED=false
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - customer-network
+
+  db:
+    image: postgres:15
+    container_name: postgres-15
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: customerManager
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: DBL.itss10
+      POSTGRES_HOST_AUTH_METHOD: trust  # Adicionado para desenvolvimento
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d customerManager"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - customer-network
+
+volumes:
+  postgres-data:
+
+networks:
+  customer-network:
+    driver: bridge
