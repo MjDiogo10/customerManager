@@ -1,5 +1,5 @@
       
-# Custumer Manager
+# Customer Manager
 
 ## Índice
 
@@ -7,7 +7,8 @@
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Pré-requisitos](#pré-requisitos)
-- [Como Configurar o Ambiente](#como-configurar-o-ambiente)
+- [Como Configurar o Ambiente](#como-executar-o-projeto)
+- [Documentação via Swagger](#documentação-via-swagger)
 
 ## Descrição
 
@@ -45,15 +46,40 @@ Se Linux/Mac
 - Docker
 - Docker-compose
 
-## Como Configurar o Ambiente
+## Como Executar o Projeto
 
-1.  **Clone o repositório:**
+- Se estiver usando Windows/Mac, inicialize o docker desktop e aguarde a engine do docker iniciar.
+
+1.  **Crie a pasta do projeto.**
+
+
+2.  **Acesse a pasta no terminal:**
+
+
+3.  **Inicialize o git:**
     ```bash
-    git clone [URL_DO_SEU_REPOSITORIO_GIT]
-    cd projectCustomerManager
+    git init
     ```
 
-2.  **Execute o docker-compose:**
+3.  **Vincular o repositório:**
+    ```bash
+    git remote add origin https://github.com/MjDiogo10/customerManager.git
+    ```
+
+4.  **Puxar arquivos do projeto:**
+    ```bash
+    git pull origin master
+    ```
+
+5.  **Subir o docker:**
     ```bash
     docker-compose up
     ```
+
+6. **Acessar a aplicação no navegador:**
+    - Acesse no navegador a url: http://localhost:4200/customers
+
+
+## Documentação via Swagger
+
+- Acesse no navegador a url: http://localhost:8080/api/swagger-ui/index.html#/
