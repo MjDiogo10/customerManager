@@ -1,0 +1,73 @@
+<div class="po-p-5">
+  <div class="row po-pb-2">
+    <po-button class="po-pr-2" p-icon="an an-arrow-left" p-label="Cancelar" (p-click)="goToListing()">
+    </po-button>
+    <po-button p-icon="an an-user-plus" p-label="Adicionar Cliente" (p-click)="addCustomer()">
+    </po-button>
+  </div>
+  <div class="po-pb-2">
+    <po-dynamic-form
+      #dynamicFormCustomer
+      [p-fields]="fieldsCustomer"
+      [p-value]="customer"
+    >
+    </po-dynamic-form>
+  </div>
+
+  <div>
+    <po-list-view
+      p-property-title="phone"
+      [p-items]="phones"
+      [p-actions]="actionsPhone"
+    >
+    </po-list-view>
+  </div>
+
+  <div>
+    <po-dynamic-form
+      #dynamicFormPhone
+      [p-fields]="fieldsPhone"
+      [p-value]="phone"
+    >
+    </po-dynamic-form>
+  </div>
+
+  <div class="row po-pt-2">
+    <po-button class="po-pb-2" p-icon="an an-phone-call" p-label="Adicionar Telefone" (p-click)="addPhone()">
+    </po-button>
+  </div>
+
+  <div>
+    <po-list-view
+      p-property-title="street"
+      [p-items]="addresses"
+      [p-actions]="actionsAddress"
+    >
+      <ng-template p-list-view-content-template let-item>
+        <div class="po-row">
+          <po-info class="po-md-12" p-label="Complemento" [p-value]="item.complement"></po-info>
+          <po-info class="po-md-6" p-label="Número" [p-value]="item.number"></po-info>
+          <po-info class="po-md-6" p-label="Bairro" [p-value]="item.neighborhood"></po-info>
+          <po-info class="po-md-6" p-label="Cidade" [p-value]="item.city"></po-info>
+          <po-info class="po-md-6" p-label="Estado" [p-value]="item.state"></po-info>
+          <po-info class="po-md-6" p-label="País" [p-value]="item.country"></po-info>
+          <po-info class="po-md-6" p-label="CEP" [p-value]="item.postalCode"></po-info>
+        </div>
+      </ng-template>
+    </po-list-view>
+  </div>
+
+  <div>
+    <po-dynamic-form
+      #dynamicFormAddress
+      [p-fields]="fieldsAddress"
+      [p-value]="address"
+    >
+    </po-dynamic-form>
+  </div>
+
+  <div class="row po-pt-2">
+    <po-button p-icon="an an-warehouse" p-label="Adicionar Endereço" (p-click)="addAddress()">
+    </po-button>
+  </div>
+</div>
