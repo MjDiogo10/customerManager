@@ -3,9 +3,9 @@ version: '3.8'
 services:
   customer-front:
     build:
-      context: ./customer-manager-front
+      context: ./front-customer-manager
       dockerfile: Dockerfile
-    container_name: customer-manager-front
+    container_name: front-customer-manager
     ports:
       - '4200:4200'
     volumes:
